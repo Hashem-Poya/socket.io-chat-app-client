@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
+import './index.css';
 import HomePage from './pages/HomePage';
 
 const socket = io('http://localhost:3000');
