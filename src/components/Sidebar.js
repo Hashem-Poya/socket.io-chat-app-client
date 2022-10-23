@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = () => {
+const SideBar = () => {
   return (
     <div className='chat__sidebar'>
       <h2>Open chat</h2>
@@ -17,4 +17,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SideBar;
