@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 
 import './index.css';
 import HomePage from './pages/HomePage';
+import ChatPage from './pages/ChatPage';
 
 const socket = io('http://localhost:3000');
 
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage socket={socket} />} />
+        <Route path='/chat' element={<ChatPage socket={socket} />} />
       </Routes>
     </BrowserRouter>
   );
