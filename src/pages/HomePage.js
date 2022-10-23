@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const HomePage = ({ socket }) => {
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('User submitted');
@@ -11,7 +12,7 @@ const HomePage = ({ socket }) => {
   };
 
   return (
-    <form className='home__container'>
+    <form className='home__container' onSubmit={handleSubmit}>
       <h2 className='home__header'>Sign in to open chat</h2>
       <label>Username</label>
       <input
@@ -22,9 +23,7 @@ const HomePage = ({ socket }) => {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <button className='home__cta' onSubmit={handleSubmit}>
-        Sign In
-      </button>
+      <button className='home__cta'>Sign In</button>
     </form>
   );
 };
