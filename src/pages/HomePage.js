@@ -7,7 +7,7 @@ const HomePage = ({ socket }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('User submitted');
+    localStorage.setItem('username', username);
     navigate('/chat');
   };
 
