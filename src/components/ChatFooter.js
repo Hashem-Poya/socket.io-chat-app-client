@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState('');
+
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (message.trim() && localStorage.getItem('username')) {
