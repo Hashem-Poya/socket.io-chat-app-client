@@ -17,10 +17,14 @@ const ChatFooter = ({ socket }) => {
   };
 
   const handleUserTyping = () => {
-    socket.emit(
-      'userTyping',
-      `${localStorage.getItem('username')} is typing...`
-    );
+    socket.emit('userTyping', {
+      isTyping: true,
+      user: `${localStorage.getItem('username')} is typing...`,
+    });
+  };
+
+  const handleSendButton = (e) => {
+    socket.emit('userTyping', { isTyping: false });
   };
 
   return (
@@ -34,7 +38,9 @@ const ChatFooter = ({ socket }) => {
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleUserTyping}
         />
-        <button className='sendBtn'>Send</button>
+        <button onClick={handleSendButton} className='sendBtn'>
+          Send
+        </button>
       </form>
     </div>
   );
