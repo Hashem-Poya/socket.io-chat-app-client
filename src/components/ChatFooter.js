@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 
-const ChatFooter = () => {
+const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState('');
-
   const handleSendMessage = (e) => {
     e.preventDefault();
-    console.log({ userName: localStorage.getItem('userName'), message });
+    if (message.trim() && localStorage.getItem('username')) {
+      socket.emit('message', {
+        socketId: socket.id,
+        id: `${socket.id}-${Date.now().toString()}}`,
+        username: localStorage.getItem('username'),
+        text: message.trim(),
+      });
+    }
     setMessage('');
   };
 
@@ -19,7 +25,7 @@ const ChatFooter = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button className='sendBtn'>SEND</button>
+        <button className='sendBtn'>Send</button>
       </form>
     </div>
   );
