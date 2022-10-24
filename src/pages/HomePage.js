@@ -8,6 +8,8 @@ const HomePage = ({ socket }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem('username', username);
+    const user = { socketId: socket.id, username: username };
+    socket.emit('newUser', user);
     navigate('/chat');
   };
 
