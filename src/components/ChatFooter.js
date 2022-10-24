@@ -15,6 +15,13 @@ const ChatFooter = ({ socket }) => {
     setMessage('');
   };
 
+  const handleUserTyping = () => {
+    socket.emit(
+      'userTyping',
+      `${localStorage.getItem('username')} is typing...`
+    );
+  };
+
   return (
     <div className='chat__footer'>
       <form className='form' onSubmit={handleSendMessage}>
@@ -24,6 +31,7 @@ const ChatFooter = ({ socket }) => {
           className='message'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleUserTyping}
         />
         <button className='sendBtn'>Send</button>
       </form>
