@@ -9,13 +9,13 @@ const ChatPage = ({ socket }) => {
 
   useEffect(() => {
     socket.on('messageResponse', (response) => {
-      setMessages([...messages, ...response]);
+      setMessages([...messages, response]);
     });
   }, [messages, socket]);
 
   return (
     <div className='chat'>
-      <ChatSideBar />
+      <ChatSideBar socket={socket} />
       <div className='chat__main'>
         <ChatBody messages={messages} />
         <ChatFooter socket={socket} />
